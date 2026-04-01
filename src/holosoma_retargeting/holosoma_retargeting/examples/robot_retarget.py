@@ -214,7 +214,8 @@ def load_motion_data(
             spine_joint_idx = constants.DEMO_JOINTS.index("Spine1")
             # LAFAN-specific spine adjustment
             human_joints[:, spine_joint_idx, -1] -= 0.06
-            smpl_scale = motion_data_config.default_scale_factor or 1.0
+            lafan_human_height = 1.7  # assumed human height in LAFAN dataset
+            smpl_scale = constants.ROBOT_HEIGHT / lafan_human_height
         elif data_format == "smplh":  # smplh
             pt_path = data_path / f"{task_name}.pt"
             if not pt_path.exists():

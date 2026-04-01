@@ -18,6 +18,7 @@ class RobotDefaults(TypedDict):
 _ROBOT_DEFAULTS: dict[str, RobotDefaults] = {
     "g1": {"robot_dof": 29, "robot_height": 1.32, "object_name": "ground"},
     "t1": {"robot_dof": 23, "robot_height": 1.2, "object_name": "ground"},
+    "themis": {"robot_dof": 28, "robot_height": 1.55, "object_name": "ground"},
 }
 
 
@@ -153,6 +154,11 @@ class RobotConfig:
                 "right_foot_sphere_4_link",
                 "left_foot_sphere_5_link",
                 "right_foot_sphere_5_link",
+            ]
+        if self.robot_type == "themis":
+            return [
+                "FOOT_R",
+                "FOOT_L",
             ]
         raise ValueError(f"Invalid robot type: {self.robot_type}")
 
