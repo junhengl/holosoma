@@ -18,7 +18,7 @@ class RobotDefaults(TypedDict):
 _ROBOT_DEFAULTS: dict[str, RobotDefaults] = {
     "g1": {"robot_dof": 29, "robot_height": 1.32, "object_name": "ground"},
     "t1": {"robot_dof": 23, "robot_height": 1.2, "object_name": "ground"},
-    "themis": {"robot_dof": 28, "robot_height": 1.55, "object_name": "ground"},
+    "themis": {"robot_dof": 28, "robot_height": 1.50, "object_name": "ground"},
 }
 
 
@@ -187,6 +187,15 @@ class RobotConfig:
                     "35": -0.05,
                 }
             )
+        if self.robot_type == "themis":
+            base.update(
+                {
+                    "21": -1.57,
+                    "24": -0.0314,  # right wrist pitch
+                    "28": -1.57,
+                    "31": -0.0314,  # left wrist pitch
+                }
+            )
 
         return base
 
@@ -211,6 +220,15 @@ class RobotConfig:
                     "33": 0.2,  # left wrist
                     "34": 0.3,
                     "35": 0.05,
+                }
+            )
+        if self.robot_type == "themis":
+            base.update(
+                {
+                    "21": 1.57,
+                    "24": 0.0314,  # right wrist pitch
+                    "28": 1.57,
+                    "31": 0.0314,  # left wrist pitch
                 }
             )
 

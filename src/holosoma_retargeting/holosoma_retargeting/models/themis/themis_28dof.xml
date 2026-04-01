@@ -140,13 +140,16 @@
                 <inertial pos="-0.00164 1.00E-05 -0.01407" mass="0.47694" fullinertia="0.000684321 0.000600813 0.000265071 -2.15e-07 4.7e-06 -1.32e-07" />
                 <geom type="mesh" mesh="FOREARM_R" rgba="0.792156863 0.819607843 0.933333333 1" contype="0" conaffinity="0" group="1" />
                 <body name="UPPERWRIST_R" pos="0 0 0" quat="2.0852339467722704e-10 0.7071067811140325 -2.0852339471999592e-10 0.7071067812590626">
-                  <joint name="WRIST_PITCH_R" type="hinge" axis="0 0 1" range="-3.14 3.14" />
+                  <joint name="WRIST_PITCH_R" type="hinge" axis="0 0 1" range="-0.0314 0.0314" />
                   <inertial pos="0.05463 -0.00013 9.00E-05" mass="0.37004" fullinertia="0.000277159 0.001412655 0.001337476 -3.87e-06 2.51e-06 5.51e-08" />
                   <geom type="mesh" mesh="UPPERWRIST_R" rgba="0.792156863 0.819607843 0.933333333 1" contype="0" conaffinity="0" group="1" />
                   <body name="LOWERWRIST_R" pos="0 0 0" quat="2.0852339467722704e-10 0.7071067811140325 -2.0852339471999592e-10 0.7071067812590626">
                     <joint name="WRIST_YAW_R" type="hinge" axis="0 0 1" range="-3.14 3.14" />
                     <inertial pos="0 2.42E-06 0.00010824" mass="0.42" diaginertia="1e-06 1e-06 1e-06" />
                     <geom type="mesh" mesh="LOWERWRIST_R" rgba="0.792156863 0.819607843 0.933333333 1" contype="0" conaffinity="0" group="1" />
+                    <body name="HAND_R" pos="0 0 0.167">
+                      <inertial pos="0 0 0" mass="0.001" diaginertia="1e-09 1e-09 1e-09" />
+                    </body>
                   </body>
                 </body>
               </body>
@@ -175,13 +178,16 @@
                 <inertial pos="0.00164 2.00E-05 -0.01407" mass="0.47694" fullinertia="0.00068432 0.00060081 0.000265072 2.81e-07 -4.7e-06 -7.48e-07" />
                 <geom type="mesh" mesh="FOREARM_L" rgba="0.792156863 0.819607843 0.933333333 1" contype="0" conaffinity="0" group="1" />
                 <body name="UPPERWRIST_L" pos="0 0 0" quat="2.0852339467722704e-10 0.7071067811140325 -2.0852339471999592e-10 0.7071067812590626">
-                  <joint name="WRIST_PITCH_L" type="hinge" axis="0 0 1" range="-3.14 3.14" />
+                  <joint name="WRIST_PITCH_L" type="hinge" axis="0 0 1" range="-0.0314 0.0314" />
                   <inertial pos="0.05463 0.00013 7.00E-05" mass="0.37004" fullinertia="0.000277159 0.001412655 0.001337475 3.87e-06 2.13e-06 -5.78e-08" />
                   <geom type="mesh" mesh="UPPERWRIST_L" rgba="0.792156863 0.819607843 0.933333333 1" contype="0" conaffinity="0" group="1" />
                   <body name="LOWERWRIST_L" pos="0 0 0" quat="2.0852339467722704e-10 0.7071067811140325 -2.0852339471999592e-10 0.7071067812590626">
                     <joint name="WRIST_YAW_L" type="hinge" axis="0 0 1" range="-3.14 3.14" />
                     <inertial pos="0 -2.37E-06 0.00010824" mass="0.42" diaginertia="1e-06 1e-06 1e-06" />
                     <geom type="mesh" mesh="LOWERWRIST_L" rgba="0.792156863 0.819607843 0.933333333 1" contype="0" conaffinity="0" group="1" />
+                    <body name="HAND_L" pos="0 0 0.167">
+                      <inertial pos="0 0 0" mass="0.001" diaginertia="1e-09 1e-09 1e-09" />
+                    </body>
                   </body>
                 </body>
               </body>
