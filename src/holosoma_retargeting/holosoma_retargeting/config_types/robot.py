@@ -157,8 +157,10 @@ class RobotConfig:
             ]
         if self.robot_type == "themis":
             return [
-                "FOOT_R",
-                "FOOT_L",
+                "FOOT_R_heel_link",
+                "FOOT_R_toe_link",
+                "FOOT_L_heel_link",
+                "FOOT_L_toe_link",
             ]
         raise ValueError(f"Invalid robot type: {self.robot_type}")
 
@@ -190,9 +192,11 @@ class RobotConfig:
         if self.robot_type == "themis":
             base.update(
                 {
-                    "21": -1.57,
+                    # "21": -1.5,
+                    # "22": 0,  # elbow pitch
                     "24": -0.0314,  # right wrist pitch
-                    "28": -1.57,
+                    # "28": -1.57,
+                    # "29": -2.5,  # elbow pitch
                     "31": -0.0314,  # left wrist pitch
                 }
             )
@@ -225,9 +229,11 @@ class RobotConfig:
         if self.robot_type == "themis":
             base.update(
                 {
-                    "21": 1.57,
+                    # "21": 1.5,
+                    # "22": 2.5,  # elbow pitch
                     "24": 0.0314,  # right wrist pitch
-                    "28": 1.57,
+                    # "28": 1.57,
+                    # "29": 0,  # elbow pitch
                     "31": 0.0314,  # left wrist pitch
                 }
             )
