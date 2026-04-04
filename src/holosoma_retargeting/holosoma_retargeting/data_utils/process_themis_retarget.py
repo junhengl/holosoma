@@ -1,21 +1,14 @@
 #!/usr/bin/env python3
 """
-Crop a Themis retargeting .npz, apply the HW→Policy joint mapping, and replay
-it with the MuJoCo passive viewer against themis_28dof_nominal.xml.
+Crop a Themis retargeting .npz and replay it with the MuJoCo passive viewer.
 
-The retargeter saves qpos in the original URDF/HW joint convention
-(themis_28dof.xml, all axis="0 0 1").  The nominal XML uses physical joint
-axes that match the sim/policy convention.  The mapping from config.py converts
-between the two:
-
-    Forward (HW → Policy / nominal):  q_nominal = sign * q_hw + offset
-    Reverse (Policy → HW):            q_hw      = sign * (q_nominal - offset)
+The retargeter now uses themis_28dof_nominal.urdf and themis_28dof_nominal.xml,
+which share the same joint convention, so no remapping is needed here.
 
 Steps:
   1. Crop qpos (and human_joints if present) to [frame_start, frame_end).
-  2. Apply forward mapping to joints [7 : 7+28].
-  3. Save the result to <output_npz>.
-  4. Optionally replay using the MuJoCo kinematic viewer.
+  2. Save the result to <output_npz>.
+  3. Optionally replay using the MuJoCo kinematic viewer.
 
 Usage:
   python process_themis_retarget.py \\
@@ -23,8 +16,6 @@ Usage:
       --output-npz ../demo_results/themis/robot_only/lafan/walk1_subject1_processed.npz \\
       --frame-start 90 --frame-end 350 \\
       --visualize
-
-  cd src/holosoma_retargeting && /home/junhengl/miniforge3/envs/themis_py310/bin/python3     holosoma_retargeting/data_utils/process_themis_retarget.py     --input-npz holosoma_retargeting/demo_results/themis/robot_only/lafan/walk1_subject1.npz     --output-npz holosoma_retargeting/demo_results/themis/robot_only/lafan/walk1_subject1_cropped.npz     --frame-start 90 --frame-end 350     --visualize
 """
 
 from __future__ import annotations
@@ -44,73 +35,24 @@ _DEFAULT_NOMINAL_XML = (
     / "models/themis/themis_28dof_nominal.xml"
 )
 
-# ── Joint mapping (mirrors config.py JOINT_SIGN / JOINT_OFFSET) ──────────────
-# Forward (HW → Policy):  q_nominal = sign * q_hw + offset
-# Reverse (Policy → HW):  q_hw      = sign * (q_nominal - offset)
-#
-# Joint order: [right_leg(6), left_leg(6), right_arm(7), left_arm(7), head(2)]
-
-def _make_sign() -> np.ndarray:
-    sign = np.ones(28, dtype=np.float64)
-    sign[1]  = -1.0   # HIP_ROLL_R
-    sign[2]  = -1.0   # HIP_PITCH_R
-    sign[3]  = -1.0   # KNEE_PITCH_R
-    sign[4]  = -1.0   # ANKLE_PITCH_R
-    sign[7]  = -1.0   # HIP_ROLL_L
-    sign[8]  = -1.0   # HIP_PITCH_L
-    sign[9]  = -1.0   # KNEE_PITCH_L
-    sign[10] = -1.0   # ANKLE_PITCH_L
-    sign[12] = -1.0   # SHOULDER_PITCH_R
-    sign[14] = -1.0   # SHOULDER_YAW_R
-    sign[15] = -1.0   # ELBOW_PITCH_R
-    sign[17] = -1.0   # WRIST_PITCH_R
-    sign[18] = -1.0   # WRIST_YAW_R
-    sign[19] = -1.0   # SHOULDER_PITCH_L
-    sign[21] = -1.0   # SHOULDER_YAW_L
-    return sign
-
-def _make_offset() -> np.ndarray:
-    offset = np.zeros(28, dtype=np.float64)
-    offset[13] = -np.pi / 2   # SHOULDER_ROLL_R
-    offset[14] =  np.pi / 2   # SHOULDER_YAW_R
-    offset[15] =  np.pi / 2   # ELBOW_PITCH_R
-    offset[20] =  np.pi / 2   # SHOULDER_ROLL_L
-    offset[21] = -np.pi / 2   # SHOULDER_YAW_L
-    offset[22] =  np.pi / 2   # ELBOW_PITCH_L
-    return offset
-
-_SIGN   = _make_sign()
-_OFFSET = _make_offset()
-
-
-def hw_to_policy(q_hw: np.ndarray) -> np.ndarray:
-    """Forward mapping: HW/URDF convention → nominal XML/policy convention.
-
-    q_nominal = sign * q_hw + offset   (applied element-wise over last axis)
-    """
-    return _SIGN * q_hw + _OFFSET
-
 
 @dataclass
 class Config:
     input_npz: str = (
         "../demo_results/themis/robot_only/lafan/walk1_subject1.npz"
     )
-    """Input .npz from the Themis retargeter (HW/URDF joint convention)."""
+    """Input .npz from the Themis retargeter."""
 
     output_npz: str = (
         "../demo_results/themis/robot_only/lafan/walk1_subject1_processed.npz"
     )
-    """Output .npz with cropped frames in nominal XML/policy convention."""
+    """Output .npz with cropped frames."""
 
     frame_start: int = 90
     """First frame to keep (inclusive)."""
 
     frame_end: int = 350
     """Last frame to keep (exclusive)."""
-
-    robot_dof: int = 28
-    """Number of actuated robot DOF (excluding floating-base 7-DOF)."""
 
     visualize: bool = False
     """Replay the processed trajectory in the MuJoCo passive viewer."""
@@ -135,11 +77,6 @@ def main(cfg: Config) -> None:
 
     # ── crop ─────────────────────────────────────────────────────────────────
     qpos_out = qpos[start:end].copy()
-
-    # ── apply HW → Policy joint mapping ──────────────────────────────────────
-    dof = cfg.robot_dof
-    qpos_out[:, 7 : 7 + dof] = hw_to_policy(qpos_out[:, 7 : 7 + dof])
-    print(f"Applied HW→Policy joint mapping to joints [7:{7+dof}]")
 
     # ── save ─────────────────────────────────────────────────────────────────
     output_path.parent.mkdir(parents=True, exist_ok=True)

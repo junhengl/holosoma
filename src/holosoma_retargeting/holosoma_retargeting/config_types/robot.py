@@ -122,9 +122,19 @@ class RobotConfig:
         """Get robot URDF file path."""
         if self.robot_urdf_file is not None:
             return self.robot_urdf_file
+        if self.robot_type == "themis":
+            return f"models/{self.robot_type}/{self.robot_type}_{self.ROBOT_DOF}dof_nominal.urdf"
         return f"models/{self.robot_type}/{self.robot_type}_{self.ROBOT_DOF}dof.urdf"
 
     ROBOT_URDF_FILE = property(_robot_urdf_file, doc="Get robot URDF file path.")
+
+    def _robot_xml_file(self) -> str:
+        """Get robot XML file path for MuJoCo."""
+        if self.robot_type == "themis":
+            return f"models/{self.robot_type}/{self.robot_type}_{self.ROBOT_DOF}dof_nominal.xml"
+        return f"models/{self.robot_type}/{self.robot_type}_{self.ROBOT_DOF}dof.xml"
+
+    ROBOT_XML_FILE = property(_robot_xml_file, doc="Get robot XML file path for MuJoCo.")
 
     def _foot_sticking_links(self) -> list[str]:
         """Get foot sticking links - use override if provided, else use robot_type default."""
@@ -192,6 +202,8 @@ class RobotConfig:
         if self.robot_type == "themis":
             base.update(
                 {
+                    "12": -0.3,
+                    "18": -0.3,
                     # "21": -1.5,
                     # "22": 0,  # elbow pitch
                     "24": -0.0314,  # right wrist pitch
@@ -229,6 +241,8 @@ class RobotConfig:
         if self.robot_type == "themis":
             base.update(
                 {
+                    "12": 0.3,
+                    "18": 0.3,
                     # "21": 1.5,
                     # "22": 2.5,  # elbow pitch
                     "24": 0.0314,  # right wrist pitch

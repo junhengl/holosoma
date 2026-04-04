@@ -147,7 +147,13 @@
                     <geom name="FOOT_R_toe_out" type="sphere" size="0.005" pos="0.155 -0.028 -0.05" rgba="0.9 0.1 0.1 0.9" contype="1" conaffinity="1" condim="3" friction="1.0 0.005 0.0001" />
                     <geom name="FOOT_R_toe_in2" type="sphere" size="0.005" pos="0.12 0.045 -0.05" rgba="0.9 0.1 0.1 0.9" contype="1" conaffinity="1" condim="3" friction="1.0 0.005 0.0001" />
                     <geom name="FOOT_R_toe_out2" type="sphere" size="0.005" pos="0.12 -0.045 -0.05" rgba="0.9 0.1 0.1 0.9" contype="1" conaffinity="1" condim="3" friction="1.0 0.005 0.0001" />
-                    <geom name="FOOT_R_heel_center" type="sphere" size="0.005" pos="-0.07 0.0 -0.05" rgba="0.9 0.1 0.1 0.9" contype="1" conaffinity="1" condim="3" friction="1.0 0.005 0.0001" />                  
+                    <geom name="FOOT_R_heel_center" type="sphere" size="0.005" pos="-0.07 0.0 -0.05" rgba="0.9 0.1 0.1 0.9" contype="1" conaffinity="1" condim="3" friction="1.0 0.005 0.0001" />
+                  </body>
+                  <body name="FOOT_R_heel_link" pos="-0.05 0 0">
+                    <inertial pos="0 0 0" mass="0.001" diaginertia="1e-09 1e-09 1e-09" />
+                  </body>
+                  <body name="FOOT_R_toe_link" pos="0.13 0 -0.05">
+                    <inertial pos="0 0 0" mass="0.001" diaginertia="1e-09 1e-09 1e-09" />
                   </body>
                 </body>
               </body>
@@ -197,7 +203,13 @@
                     <geom name="FOOT_L_toe_out" type="sphere" size="0.005" pos="0.155 -0.028 -0.05" rgba="0.9 0.1 0.1 0.9" contype="1" conaffinity="1" condim="3" friction="1.0 0.005 0.0001" />
                     <geom name="FOOT_L_toe_in2" type="sphere" size="0.005" pos="0.12 0.045 -0.05" rgba="0.9 0.1 0.1 0.9" contype="1" conaffinity="1" condim="3" friction="1.0 0.005 0.0001" />
                     <geom name="FOOT_L_toe_out2" type="sphere" size="0.005" pos="0.12 -0.045 -0.05" rgba="0.9 0.1 0.1 0.9" contype="1" conaffinity="1" condim="3" friction="1.0 0.005 0.0001" />
-                    <geom name="FOOT_L_heel_center" type="sphere" size="0.005" pos="-0.07 0.0 -0.05" rgba="0.9 0.1 0.1 0.9" contype="1" conaffinity="1" condim="3" friction="1.0 0.005 0.0001" />                  
+                    <geom name="FOOT_L_heel_center" type="sphere" size="0.005" pos="-0.07 0.0 -0.05" rgba="0.9 0.1 0.1 0.9" contype="1" conaffinity="1" condim="3" friction="1.0 0.005 0.0001" />
+                  </body>
+                  <body name="FOOT_L_heel_link" pos="-0.05 0 0">
+                    <inertial pos="0 0 0" mass="0.001" diaginertia="1e-09 1e-09 1e-09" />
+                  </body>
+                  <body name="FOOT_L_toe_link" pos="0.13 0 -0.05">
+                    <inertial pos="0 0 0" mass="0.001" diaginertia="1e-09 1e-09 1e-09" />
                   </body>
                 </body>
               </body>

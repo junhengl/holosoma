@@ -308,8 +308,8 @@ JOINTS_MAPPINGS = {
         "RightFoot": "FOOT_R_heel_link",
         "LeftToeBase": "FOOT_L_toe_link",
         "RightToeBase": "FOOT_R_toe_link",
-        "LeftHand": "HAND_L",
-        "RightHand": "HAND_R",
+        "LeftHand": "LOWERWRIST_L",
+        "RightHand": "LOWERWRIST_R",
     },
     ("smplh", "themis"): {
         "Pelvis": "BASE_LINK",
@@ -325,8 +325,8 @@ JOINTS_MAPPINGS = {
         "R_Ankle": "FOOT_R_heel_link",
         "L_Toe": "FOOT_L_toe_link",
         "R_Toe": "FOOT_R_toe_link",
-        "L_Wrist": "HAND_L",
-        "R_Wrist": "HAND_R",
+        "L_Wrist": "LOWERWRIST_L",
+        "R_Wrist": "LOWERWRIST_R",
     },
     ("smplx", "themis"): {
         "Pelvis": "BASE_LINK",
@@ -342,8 +342,8 @@ JOINTS_MAPPINGS = {
         "R_Ankle": "FOOT_R_heel_link",
         "L_Foot": "FOOT_L_toe_link",
         "R_Foot": "FOOT_R_toe_link",
-        "L_Wrist": "HAND_L",
-        "R_Wrist": "HAND_R",
+        "L_Wrist": "LOWERWRIST_L",
+        "R_Wrist": "LOWERWRIST_R",
     },
     ("mocap", "themis"): {
         "Spine1": "BASE_LINK",

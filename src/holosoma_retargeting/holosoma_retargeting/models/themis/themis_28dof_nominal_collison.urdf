@@ -10,12 +10,12 @@
   </link>
 
   <link name="BASE_LINK">
-    <visual>
+    <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <mesh filename="meshes/BASE_LINK.STL" />
       </geometry>
-    </visual>
+    </collision>
     <inertial>
       <origin xyz="-0.081 0 -0.02" rpy="0 0 0" />
       <mass value="12.72" />
@@ -75,12 +75,12 @@
   </link>
 
   <link name="TIBIA_R">
-    <visual>
+    <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <mesh filename="meshes/TIBIA_R_rot.STL" />
       </geometry>
-    </visual>
+    </collision>
     <inertial>
       <origin xyz="0.00694 -0.00006 -0.09678" rpy="0 0 0" />
       <mass value="1.27716" />
@@ -106,12 +106,12 @@
   </link>
 
   <link name="FOOT_R">
-    <visual>
+    <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <mesh filename="meshes/FOOT_R_rot2.STL" />
       </geometry>
-    </visual>
+    </collision>
     <inertial>
       <origin xyz="0.0337 0.00005 -0.04684" rpy="0 0 0" />
       <mass value="0.41628" />
@@ -120,10 +120,163 @@
   </link>
 
   <link name="FOOT_R_contact">
+    <visual>
+      <origin xyz="-0.06 0.025 -0.05" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005" />
+      </geometry>
+      <material name="FOOT_R_contact_mat">
+        <color rgba="0.90196471 0.10196471 0.10196471 0.90196471"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.06 0.025 -0.05" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005" />
+      </geometry>
+    </collision>
     <inertial>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <mass value="0" />
       <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+    </inertial>
+  </link>
+
+  <link name="FOOT_R_contact_geom_1">
+    <visual>
+      <origin xyz="-0.06 -0.025 -0.05" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005" />
+      </geometry>
+      <material name="FOOT_R_contact_geom_1_mat">
+        <color rgba="0.90196471 0.10196471 0.10196471 0.90196471"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.06 -0.025 -0.05" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0" />
+      <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1" />
+    </inertial>
+  </link>
+
+  <link name="FOOT_R_contact_geom_2">
+    <visual>
+      <origin xyz="0.155 0.028 -0.05" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005" />
+      </geometry>
+      <material name="FOOT_R_contact_geom_2_mat">
+        <color rgba="0.90196471 0.10196471 0.10196471 0.90196471"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.155 0.028 -0.05" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0" />
+      <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1" />
+    </inertial>
+  </link>
+
+  <link name="FOOT_R_contact_geom_3">
+    <visual>
+      <origin xyz="0.155 -0.028 -0.05" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005" />
+      </geometry>
+      <material name="FOOT_R_contact_geom_3_mat">
+        <color rgba="0.90196471 0.10196471 0.10196471 0.90196471"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.155 -0.028 -0.05" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0" />
+      <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1" />
+    </inertial>
+  </link>
+
+  <link name="FOOT_R_contact_geom_4">
+    <visual>
+      <origin xyz="0.12 0.045 -0.05" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005" />
+      </geometry>
+      <material name="FOOT_R_contact_geom_4_mat">
+        <color rgba="0.90196471 0.10196471 0.10196471 0.90196471"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.12 0.045 -0.05" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0" />
+      <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1" />
+    </inertial>
+  </link>
+
+  <link name="FOOT_R_contact_geom_5">
+    <visual>
+      <origin xyz="0.12 -0.045 -0.05" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005" />
+      </geometry>
+      <material name="FOOT_R_contact_geom_5_mat">
+        <color rgba="0.90196471 0.10196471 0.10196471 0.90196471"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.12 -0.045 -0.05" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0" />
+      <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1" />
+    </inertial>
+  </link>
+
+  <link name="FOOT_R_contact_geom_6">
+    <visual>
+      <origin xyz="-0.07 0 -0.05" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005" />
+      </geometry>
+      <material name="FOOT_R_contact_geom_6_mat">
+        <color rgba="0.90196471 0.10196471 0.10196471 0.90196471"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.07 0 -0.05" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0" />
+      <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1" />
     </inertial>
   </link>
 
@@ -179,12 +332,12 @@
   </link>
 
   <link name="TIBIA_L">
-    <visual>
+    <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <mesh filename="meshes/TIBIA_L_rot.STL" />
       </geometry>
-    </visual>
+    </collision>
     <inertial>
       <origin xyz="0.00694 0.00006 -0.09678" rpy="0 0 0" />
       <mass value="1.27716" />
@@ -210,12 +363,12 @@
   </link>
 
   <link name="FOOT_L">
-    <visual>
+    <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <mesh filename="meshes/FOOT_L_rot2.STL" />
       </geometry>
-    </visual>
+    </collision>
     <inertial>
       <origin xyz="0.0337 -0.00005 -0.04684" rpy="0 0 0" />
       <mass value="0.41628" />
@@ -224,10 +377,163 @@
   </link>
 
   <link name="FOOT_L_contact">
+    <visual>
+      <origin xyz="-0.06 0.025 -0.05" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005" />
+      </geometry>
+      <material name="FOOT_L_contact_mat">
+        <color rgba="0.90196471 0.10196471 0.10196471 0.90196471"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.06 0.025 -0.05" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005" />
+      </geometry>
+    </collision>
     <inertial>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <mass value="0" />
       <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+    </inertial>
+  </link>
+
+  <link name="FOOT_L_contact_geom_1">
+    <visual>
+      <origin xyz="-0.06 -0.025 -0.05" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005" />
+      </geometry>
+      <material name="FOOT_L_contact_geom_1_mat">
+        <color rgba="0.90196471 0.10196471 0.10196471 0.90196471"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.06 -0.025 -0.05" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0" />
+      <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1" />
+    </inertial>
+  </link>
+
+  <link name="FOOT_L_contact_geom_2">
+    <visual>
+      <origin xyz="0.155 0.028 -0.05" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005" />
+      </geometry>
+      <material name="FOOT_L_contact_geom_2_mat">
+        <color rgba="0.90196471 0.10196471 0.10196471 0.90196471"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.155 0.028 -0.05" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0" />
+      <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1" />
+    </inertial>
+  </link>
+
+  <link name="FOOT_L_contact_geom_3">
+    <visual>
+      <origin xyz="0.155 -0.028 -0.05" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005" />
+      </geometry>
+      <material name="FOOT_L_contact_geom_3_mat">
+        <color rgba="0.90196471 0.10196471 0.10196471 0.90196471"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.155 -0.028 -0.05" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0" />
+      <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1" />
+    </inertial>
+  </link>
+
+  <link name="FOOT_L_contact_geom_4">
+    <visual>
+      <origin xyz="0.12 0.045 -0.05" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005" />
+      </geometry>
+      <material name="FOOT_L_contact_geom_4_mat">
+        <color rgba="0.90196471 0.10196471 0.10196471 0.90196471"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.12 0.045 -0.05" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0" />
+      <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1" />
+    </inertial>
+  </link>
+
+  <link name="FOOT_L_contact_geom_5">
+    <visual>
+      <origin xyz="0.12 -0.045 -0.05" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005" />
+      </geometry>
+      <material name="FOOT_L_contact_geom_5_mat">
+        <color rgba="0.90196471 0.10196471 0.10196471 0.90196471"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.12 -0.045 -0.05" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0" />
+      <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1" />
+    </inertial>
+  </link>
+
+  <link name="FOOT_L_contact_geom_6">
+    <visual>
+      <origin xyz="-0.07 0 -0.05" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005" />
+      </geometry>
+      <material name="FOOT_L_contact_geom_6_mat">
+        <color rgba="0.90196471 0.10196471 0.10196471 0.90196471"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.07 0 -0.05" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0" />
+      <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1" />
     </inertial>
   </link>
 
@@ -266,12 +572,12 @@
   </link>
 
   <link name="UPPERARM_R">
-    <visual>
+    <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <mesh filename="meshes/UPPERARM_R_rot.STL" />
       </geometry>
-    </visual>
+    </collision>
     <inertial>
       <origin xyz="0.0104 -0.00152 -0.1973" rpy="0 0 0" />
       <mass value="0.51544" />
@@ -357,6 +663,12 @@
         <color rgba="0.32157255 0.32157255 0.32157255 0.80000392"/>
       </material>
     </visual>
+    <collision>
+      <origin xyz="0.15 0 0" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.04" />
+      </geometry>
+    </collision>
     <inertial>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <mass value="0" />
@@ -399,12 +711,12 @@
   </link>
 
   <link name="UPPERARM_L">
-    <visual>
+    <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <mesh filename="meshes/UPPERARM_L_rot.STL" />
       </geometry>
-    </visual>
+    </collision>
     <inertial>
       <origin xyz="0.0104 0.00152 -0.1973" rpy="0 0 0" />
       <mass value="0.51544" />
@@ -490,6 +802,12 @@
         <color rgba="0.32157255 0.32157255 0.32157255 0.80000392"/>
       </material>
     </visual>
+    <collision>
+      <origin xyz="0.15 0 0" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.04" />
+      </geometry>
+    </collision>
     <inertial>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <mass value="0" />
@@ -534,7 +852,7 @@
   <joint name="root_joint" type="fixed">
     <parent link="world" />
     <child link="BASE_LINK" />
-    <origin xyz="0 0 0" rpy="0 0 0" />
+    <origin xyz="0 0 1.17" rpy="0 0 0" />
   </joint>
 
   <joint name="HIP_YAW_R" type="revolute">
@@ -622,6 +940,42 @@
     <origin xyz="0 0 0" rpy="0 0 0" />
   </joint>
 
+  <joint name="FOOT_R_contact_to_FOOT_R_contact_geom_1" type="fixed">
+    <parent link="FOOT_R_contact" />
+    <child link="FOOT_R_contact_geom_1" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+
+  <joint name="FOOT_R_contact_to_FOOT_R_contact_geom_2" type="fixed">
+    <parent link="FOOT_R_contact" />
+    <child link="FOOT_R_contact_geom_2" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+
+  <joint name="FOOT_R_contact_to_FOOT_R_contact_geom_3" type="fixed">
+    <parent link="FOOT_R_contact" />
+    <child link="FOOT_R_contact_geom_3" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+
+  <joint name="FOOT_R_contact_to_FOOT_R_contact_geom_4" type="fixed">
+    <parent link="FOOT_R_contact" />
+    <child link="FOOT_R_contact_geom_4" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+
+  <joint name="FOOT_R_contact_to_FOOT_R_contact_geom_5" type="fixed">
+    <parent link="FOOT_R_contact" />
+    <child link="FOOT_R_contact_geom_5" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+
+  <joint name="FOOT_R_contact_to_FOOT_R_contact_geom_6" type="fixed">
+    <parent link="FOOT_R_contact" />
+    <child link="FOOT_R_contact_geom_6" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+
   <joint name="HIP_YAW_L" type="revolute">
     <parent link="BASE_LINK" />
     <child link="HIP_L" />
@@ -704,6 +1058,42 @@
   <joint name="FOOT_L_to_FOOT_L_contact" type="fixed">
     <parent link="FOOT_L" />
     <child link="FOOT_L_contact" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+
+  <joint name="FOOT_L_contact_to_FOOT_L_contact_geom_1" type="fixed">
+    <parent link="FOOT_L_contact" />
+    <child link="FOOT_L_contact_geom_1" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+
+  <joint name="FOOT_L_contact_to_FOOT_L_contact_geom_2" type="fixed">
+    <parent link="FOOT_L_contact" />
+    <child link="FOOT_L_contact_geom_2" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+
+  <joint name="FOOT_L_contact_to_FOOT_L_contact_geom_3" type="fixed">
+    <parent link="FOOT_L_contact" />
+    <child link="FOOT_L_contact_geom_3" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+
+  <joint name="FOOT_L_contact_to_FOOT_L_contact_geom_4" type="fixed">
+    <parent link="FOOT_L_contact" />
+    <child link="FOOT_L_contact_geom_4" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+
+  <joint name="FOOT_L_contact_to_FOOT_L_contact_geom_5" type="fixed">
+    <parent link="FOOT_L_contact" />
+    <child link="FOOT_L_contact_geom_5" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+
+  <joint name="FOOT_L_contact_to_FOOT_L_contact_geom_6" type="fixed">
+    <parent link="FOOT_L_contact" />
+    <child link="FOOT_L_contact_geom_6" />
     <origin xyz="0 0 0" rpy="0 0 0" />
   </joint>
 
